@@ -85,6 +85,6 @@ You should see the frontpage of the application.
 
 Now you can access the Admin Panel using url `/admin/`, which brings the login page. The default credentials of the admin user is:
 
-    admin:admin
+    admin:adminpass
 
 Make sure you change the password of admin user after first log in!
