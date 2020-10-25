@@ -13,9 +13,9 @@ Current architecture minimizes the running costs of the infrastructure, so it do
 
 The infrastructure uses AWS Fargate -solution to set up an environment that does not need any virtual machine to avoid any unnecessary maintenance costs.
 
-Change your current working directory to: `yt-musicquiz\ytmusicquiz-deploy`, which contains production env-related files and execute the following steps in order.
-
 # Steps to set up your environment
+
+Change your current working directory to: `yt-musicquiz\ytmusicquiz-deploy`, which contains production env-related files and execute the following steps in order.
 
 ### 1. Set up AWS resource:
 
