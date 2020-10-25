@@ -4,7 +4,7 @@ The production environment uses Terraform as a solution to manage infrastructure
 
 ![AWS infrastructure](aws_infra.png)
 
-The environment starts with an instance of AWS Virtual Private Cloud, which is the largest group of the environment: It contains almost all resources that Terraforms provisions. You should create a new VPC per YTMusicQuiz-instance to provide enough separation and isolation between instances. In the infrastructure diagram, you can see that the Elastic Container Registries does not belong in VPC and therefore can be shared between multiple instances.
+The environment starts with an instance of AWS Virtual Private Cloud, which is the largest group of the environment: It contains almost all resources that Terraform provisions. You should create a new VPC per YTMusicQuiz-instance to provide enough separation and isolation between instances. In the infrastructure diagram, you can see that the Elastic Container Registries does not belong in VPC and therefore can be shared between multiple instances.
 
 In terms of security, there are three security groups: One for a load balancer, one for business logic, and one for database-layer. Only traffic from upper security group allowed (the diagram container arrows to show traffic flow visually) and there is no direct access to the database server at all. All administrative actions must be done through the Admin UI.
 
@@ -20,6 +20,7 @@ Change your current working directory to: `yt-musicquiz\ytmusicquiz-deploy`, whi
 
 Run the following command:
 
+    > terraform init
     > terraform apply
 
     [... snip ...]
@@ -64,7 +65,7 @@ local development machine.
 
 Make sure you have valid authentication:
 
-    > aws2.exe ecr get-login
+    > aws2 ecr get-login
     docker login ...
     > docker login ...
     Login Succeeded
@@ -79,10 +80,34 @@ Finally, use Docker compose to push the images:
 
 Use `http_url` from the console output of `terraform apply` command and open it with the browser.
 
+![Front page of the application](frontpage.png)
+
 You should see the front page of the application.
 
-Now you can access the Admin Panel using `/admin/`-URL , which brings the login page. The default admin credentials in:
+Now you can access the Admin Panel using `/admin/`-URL , which brings the login page.
+
+![Admin UI](admin.png)
+
+The default admin credentials is:
 
     admin:adminpass
 
 Make sure you change the password after login!
+
+## Appendix: Deleting your environment
+
+When you're done with your environment and want to destroy it, you should follow the following steps to do it in an automated way as possible.
+
+### 1. Modify the RDS database instance
+
+Use AWS Console to modify the RDS database instance and remove delete protection. Delete protection protects the database from accidental deletion. This is enabled by default and therefore Terraform cannot destroy the instance on its own.
+
+![Modify DB instance](modify_rds_db_remove_delete_protection.png)
+
+### 2. Use terraform to destroy the environment
+
+Now you can use Terraform to destroy all created AWS resources:
+
+    terraform destroy
+
+*This will destroy everything!* Including the AWS ECR -registries, which contains container images of the application.
