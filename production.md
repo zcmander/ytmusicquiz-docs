@@ -108,6 +108,17 @@ Use AWS Console to modify the RDS database instance and remove delete protection
 
 Now you can use Terraform to destroy all created AWS resources:
 
-    terraform destroy
+    > terraform destroy
+    Plan: 0 to add, 0 to change, 25 to destroy.
+
+    Do you really want to destroy all resources?
+      Terraform will destroy all your managed infrastructure, as shown above.
+      There is no undo. Only 'yes' will be accepted to confirm.
+
+    Enter a value: yes
+
+    [.. SNIP ...]
+
+    Destroy complete! Resources: 25 destroyed.
 
 *This will destroy everything!* Including the AWS ECR -registries, which contains container images of the application.
