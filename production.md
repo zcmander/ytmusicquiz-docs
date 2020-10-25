@@ -1,20 +1,19 @@
 # Production environment
 
-Change your current working directory to: `yt-musicquiz\ytmusicquiz-deploy`, which contains production env-related files.
+The production environment uses Terraform as a solution to manage infrastructure as code. It has been written to utilize hosted services provided by AWS and does not easily convert to another cloud provider. However, it's possible to do so, because the application uses only open-source -software to implement its features. An example of this is the
+development environment, that composes similiar environment using Docker Compose during local development.
 
-The production environment uses Terraform as a solution to manage infrastructure as code. It has been written to utilize hosted services provided by AWS and does not easily convert to another cloud provider. However, it's possible to do so, because the application uses only open-source -software to implement its features.
+![AWS infrastructure](aws_infra.png)
 
-Following external software needed to run the application in the production environment:
-* PostgreSQL -database
-* Redis -database
+The environment starts with an instance of AWS Virtual Private Cloud, which is the largest group of the environment: It contains almost all resources that Terraforms provisions. You should create a new VPC per YTMusicQuiz-instance to provide enough separation and isolation between instances. In the infrastructure diagram, you can see that the Elastic Container Registries does not belong in VPC and therefore can be shared between multiple instances.
 
-AWS-services utilized by the production environment scripts:
+In terms of security, there are three security groups: One for a load balancer, one for business logic, and one for database-layer. Only traffic from upper security group allowed (the diagram container arrows to show traffic flow visually) and there is no direct access to the database server at all. All administrative actions must be done through the Admin UI.
 
- * Amazon ECR - Elastic Container Registry
- * Amazon ECS - Elastic Container Service
+Current architecture minimizes the running costs of the infrastructure, so it does not provide a solution for backup/restore, disaster recovery, or high availability. These functionalities can be added by extending existing templates.
 
 The infrastructure uses AWS Fargate -solution to set up an environment that does not need any virtual machine to avoid any unnecessary maintenance costs.
 
+Change your current working directory to: `yt-musicquiz\ytmusicquiz-deploy`, which contains production env-related files and execute the following steps in order.
 
 # Steps to set up your environment
 
