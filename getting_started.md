@@ -11,3 +11,13 @@ Change your current working directory to: `yt-musicquiz\ytmusicquiz-deploy`, whi
 2. Start dev environment:
 
         docker-compose -f .\docker-compose.dev.yml start
+
+## Access the environment
+
+You can open the browser with URL:
+
+http://localhost:8080/
+
+And the application front page shows:
+
+![Front page of the application](frontpage.png)
