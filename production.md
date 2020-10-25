@@ -1,6 +1,6 @@
 # Production environment
 
-The production environment uses Terraform as a solution to manage infrastructure as code. It has been written to utilize hosted services provided by AWS and does not easily convert to another cloud provider. However, it's possible to do so, because the application uses only open-source -software to implement its features. AWS services are only used to automate and orchestrate the deployment in order to avoid maintenance overhead and minimize possible failure points, so it should be quite a quite stable environment.
+The production environment uses Terraform as a solution to manage infrastructure as code. It has been written to utilize hosted services provided by AWS and does not easily convert to another cloud provider. However, it's possible to do so, because the application uses only open-source -software to implement its features. AWS services are only used to automate and orchestrate the deployment in order to avoid maintenance overhead and minimize possible failure points, so it should be apretty stable environment.
 
 ![AWS infrastructure](aws_infra.png)
 
