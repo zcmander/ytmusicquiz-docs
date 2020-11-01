@@ -6,11 +6,11 @@ Change your current working directory to: `yt-musicquiz\ytmusicquiz-deploy`, whi
 
 1. Build dev environment:
 
-        docker-compose -f .\docker-compose.dev.yml build
+        docker-compose -f .\docker-compose.yml -f .\docker-compose.dev.yml build
 
 2. Start dev environment:
 
-        docker-compose -f .\docker-compose.dev.yml start
+         docker-compose -f .\docker-compose.yml -f .\docker-compose.dev.yml up
 
 ## Access the environment
 
@@ -18,6 +18,6 @@ You can open the browser with URL:
 
 http://localhost:8080/
 
-And the application front page shows:
+And you should see an similiar web page as below:
 
 ![Front page of the application](frontpage.png)
