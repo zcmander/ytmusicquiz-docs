@@ -18,7 +18,7 @@ This repository contains documentation of the project.
 Game:
  * [Gameplay](gameplay.md) - How the game works.
 
-Develpoment:
+Development:
  * [Getting started](getting_started.md) - A guide to set up development environment.
  * [Production environment](production.md) - A guide to set up production environment to AWS using Terraform.
 
