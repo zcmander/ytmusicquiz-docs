@@ -18,9 +18,9 @@ This repository contains documentation of the project.
 Game:
  * [Gameplay](gameplay.md) - How the game works.
 
-Development:
- * [Getting started](getting_started.md) - A guide to set up development environment.
- * [Production environment](production.md) - A guide to set up production environment to AWS using Terraform.
+For developers:
+ * [Getting started](getting_started.md) - A guide to set up a development environment using Docker.
+ * [Production environment](production.md) - How to use terraform-templates to provision infrastructure to AWS cloud.
 
 [repo_ytmusicquiz]: https://github.com/zcmander/ytmusicquiz/
 [repo_ytmusicquiz_dashboard]: https://github.com/zcmander/ytmusicquiz-dashboard/
